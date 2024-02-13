@@ -1,33 +1,49 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: Introduction
+description: ''
+position: 1
+category: 'Getting Started'
+steps:
+  - Create an account.
+  - Go to the Dashboard.
+  - Select Settings on the sidebar.
+  - Get your client ID and client Secret in the API Key section under Organization (You may have to scroll down)
+features:
+  - Do follow up on LinkedIn
+  - Discover a new channel for sales & marketing
+  - Automate update of contacts
+  - WebHooks
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+![Home Screen](./images/getting-started.png "Landing page after login")
 
-## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Welcome to the Reverse Contact API 👋
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Reverse Contact is a simple and powerful solution to boost your lead activation..
 
-## Authentication
+Our API is organized around [REST](https://en.wikipedia.org/wiki/Representational_State_Transfer), has predictable resource-oriented URLs, accepts [JSON-encoded](https://www.json.org/json-en.html)  request bodies, returns [JSON-encoded](https://www.json.org/json-en.html) responses, and uses standard [HTTP response codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), authentication, and verbs.
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Integrate our services into your software to simplify, transform and save time on searching for someone's LinkedIn profile.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+## Status Codes
+Reverse Contact uses standard HTTP response codes to indicate the success or failure of an API request.
+
+In general: Codes in the 2xx range indicate success and Codes in the 4xx range indicate an error that failed given the information provided.
+
+| Code	 | Name	 | Summary |
+| :---:    | :---   | :---     |
+|200	|OK	| Everything worked as expected.|
+|400	|Bad Request |	The request was unacceptable, often due to missing a required parameter. |
+|401	|Unauthorized	|Invalid token provided in Authorization header |
+|402	|Payment Required	|You don't have enough credits on your account to perform the request.  |
+|403	|Forbidden	| The API key doesn't have permissions to perform the request.|
+
+
+When you're looking to connect to our API, the first step is to __have an account__.
+
+
+
+## Rate limit
+
+The Reverse Contact API has a rate limit of __15 requests per second__. API rate limits are essential for managing server load and ensuring consistent and reliable service for all users. By limiting the number of requests a user can make per second, it helps prevent any single user from overloading the system, which can lead to slower response times or system outages, ensuring fair usage and availability of the service for everyone.
