@@ -3,12 +3,17 @@ info:
   title: Reverse Contact API
   version: 1.0.0
 servers:
-- url: https://docs.reversecontact.com/reverse_email_lookup
+- url: https://api.reversecontact.com
 security:
 - apiKey: []
+tags:
+- name: Person
+- name: Company
 paths:
   '/enrichment':
     get:
+      tags:
+      - Person
       operationId: ReverseEmailLookup
       summary: Reverse Email Lookup
       description: This operation allows you to find data from an email. It returns data profile and company information as the response. This operation consume 1 credit.
@@ -98,6 +103,8 @@ paths:
                   $ref: '#/components/examples/ServerError'
   '/enrichment/profile':
     get:
+      tags:
+      - Person
       operationId: ExtractPersonDataProfile
       summary: Extract Person Data Profile
       description: This operation allows you to extract data from a Person Linkedin URL. It returns profile data and current company data of the person as the response. This operation consume 1 credit.
@@ -170,6 +177,8 @@ paths:
                   $ref: '#/components/examples/ServerError'
   '/enrichment/company/domain':
     get:
+      tags:
+      - Company
       operationId: ReverseDomainLookup
       summary: Reverse Domain Lookup
       description: This operation allows you to find data from a domain. It returns company information as the response. This operation consume 1 credit.
@@ -244,6 +253,8 @@ paths:
                   $ref: '#/components/examples/ServerError'
   '/enrichment/company':
     get:
+      tags:
+      - Company
       operationId: ExtractCompanyDataProfile
       summary: Extract Company Data Profile
       description: This operation allows you to extract data from a Company Linkedin URL. It returns company data as the response. This operation consume 1 credit.
@@ -399,6 +410,12 @@ components:
         success:
           type: boolean
           description: Indicates success or failure of api request.
+        credits_left:
+          type: integer
+          description: The usable credits available for the user account after this query.
+        rate_limit_left:
+          type: integer
+          description: The usable daily request limit available for the user account after this query.
         person:
           oneOf:
           - type: boolean
@@ -411,12 +428,6 @@ components:
             enum:
             - false
           - $ref: '#/components/schemas/Company'
-        credits_left:
-          type: integer
-          description: The usable credits available for the user account after this query.
-        rate_limit_left:
-          type: integer
-          description: The usable daily request limit available for the user account after this query.
     Company:
       type: object
       properties:
@@ -476,36 +487,36 @@ components:
         success:
           type: boolean
           description: Indicates success or failure of api request.
-        company:
-          oneOf:
-          - type: boolean
-            enum:
-            - false
-          - $ref: '#/components/schemas/Company'
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
+        company:
+          oneOf:
+          - type: boolean
+            enum:
+            - false
+          - $ref: '#/components/schemas/Company'
     ExtractCompanyDataProfile:
       type: object
       properties:
         success:
           type: boolean
           description: Indicates success or failure of api request.
-        company:
-          oneOf:
-          - type: boolean
-            enum:
-            - false
-          - $ref: '#/components/schemas/Company'
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
         rate_limit_left:
           type: integer
           description: Represents the usable daily request limit available for the user account after this query.
+        company:
+          oneOf:
+          - type: boolean
+            enum:
+            - false
+          - $ref: '#/components/schemas/Company'
     ErrorResponseSchema:
       type: object
       properties:
@@ -525,6 +536,7 @@ components:
         success: true
         email: ilies@visum.run
         emailType: professional
+        credits_left: 20602
         person:
           publicIdentifier: iliesgraffion-visum-find-stacks-of-anyone
           linkedInIdentifier: ACoAABeeBc4BdhwvD1RNk_40gtabNjwzUgvost0
@@ -706,21 +718,22 @@ components:
           industry: Computer Software
           universalName: visum-run
           linkedInUrl: https://www.linkedin.com/company/visum-run/
-          linkedInId: '71234370'
-        credits_left: 20602
+          linkedInId: '71234370'     
     ProfileNotFound:
       summary: Profile Not Found
       value:
         success: true
         email: efzefhzefzef@live.fr
         emailType: personal
+        credits_left: 140
         person: false
         company: false
-        credits_left: 140
     PersonProfileExtracted:
       summary: Person Profile Extracted
       value:
         success: true
+        credits_left: 4337
+        rate_limit_left: 19608
         person:
           publicIdentifier: julien-keraval-visum
           linkedInIdentifier: ACoAACJrg3QBOHYEx_zMaj2sF7IgUFOpF5VLkss
@@ -920,12 +933,12 @@ components:
           universalName: visum-run
           linkedinUrl: https://www.linkedin.com/company/visum-run/
           linkedinId: '71234370'
-        credits_left: 4337
-        rate_limit_left: 19608
     CompanyFound:
       summary: Company Found
       value:
         success: true
+        credits_left: 1773
+        rate_limit_left: 19989
         company:
           linkedInUrl: https://www.linkedin.com/company/visum-run/
           name: Visum
@@ -953,19 +966,19 @@ components:
           employeeCount: 8
           universalName: visum-run
           linkedInId: '71234370'
-        credits_left: 1773
-        rate_limit_left: 19989
     CompanyNotFound:
       summary: Company Not Found
       value:
         success: true
-        company: false
         credits_left: 1773
         rate_limit_left: 19989
+        company: false
     CompanyProfileExtracted:
       summary: Company Profile Extracted
       value:
         success: true
+        credits_left: 1796
+        rate_limit_left: 19999
         company:
           linkedInUrl: https://www.linkedin.com/company/visum-run/
           name: Visum
@@ -993,8 +1006,6 @@ components:
           employeeCount: 8
           universalName: visum-run
           linkedInId: '71234370'
-        credits_left: 1796
-        rate_limit_left: 19999
     NoApiKey:
       summary: No Api Key
       value:

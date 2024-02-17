@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Reverse Contact API",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -25,12 +25,6 @@
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "navigation": [
     
     {
@@ -41,12 +35,17 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Person",
       "pages": [
-        "api-reference/endpoint/ExtractPersonDataProfile",
-        "api-reference/endpoint/ReverseEmailLookup",
-        "api-reference/endpoint/ReverseDomainLookup",
-        "api-reference/endpoint/ExtractCompanyDataProfile"
+        "endpoint/ExtractPersonDataProfile",
+        "endpoint/ReverseEmailLookup"
+      ]
+    },
+    {
+      "group": "Company",
+      "pages": [
+        "endpoint/ReverseDomainLookup",
+        "endpoint/ExtractCompanyDataProfile"
       ]
     },
     {
