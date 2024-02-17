@@ -46,11 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReverseEmailLookup'
-              examples:
-                ProfileFound:
-                  $ref: '#/components/examples/ProfileFound'
-                ProfileNotFound:
-                  $ref: '#/components/examples/ProfileNotFound'
+              
         400:
           description: Bad Request
           content:
