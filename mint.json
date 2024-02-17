@@ -37,8 +37,8 @@
     {
       "group": "Person",
       "pages": [
-        "endpoint/ExtractPersonDataProfile",
-        "endpoint/ReverseEmailLookup"
+        "endpoint/ReverseEmailLookup",
+        "endpoint/ExtractPersonDataProfile"
       ]
     },
     {
