@@ -345,6 +345,18 @@ components:
             enum:
             - false
           - $ref: '#/components/schemas/Person'
+        company:
+          oneOf:
+          - type: boolean
+            enum:
+            - false
+          - $ref: '#/components/schemas/Company'
+        credits_left:
+          type: int
+          description: Represents the usable credits available for the user account after this query.
+        rate_limit_left:
+          type: int
+          description: Represents the usable daily request limit available for the user account after this query.
     Person:
       type: object
       properties:
