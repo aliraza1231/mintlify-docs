@@ -341,16 +341,16 @@ components:
           description: Represents the type of account.
         person:
           oneOf:
+          - $ref: '#/components/schemas/Person'
           - type: boolean
             enum:
             - false
-          - $ref: '#/components/schemas/Person'
         company:
           oneOf:
+          - $ref: '#/components/schemas/Company'
           - type: boolean
             enum:
             - false
-          - $ref: '#/components/schemas/Company'
         credits_left:
           type: integer
           description: Represents the usable credits available for the user account after this query.
@@ -430,16 +430,16 @@ components:
           description: The usable daily request limit available for the user account after this query.
         person:
           oneOf:
+          - $ref: '#/components/schemas/Person'
           - type: boolean
             enum:
             - false
-          - $ref: '#/components/schemas/Person'
         company:
           oneOf:
+          - $ref: '#/components/schemas/Company'
           - type: boolean
             enum:
             - false
-          - $ref: '#/components/schemas/Company'
     Company:
       type: object
       properties:
@@ -507,10 +507,10 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         company:
           oneOf:
+          - $ref: '#/components/schemas/Company'
           - type: boolean
             enum:
             - false
-          - $ref: '#/components/schemas/Company'
     ExtractCompanyDataProfile:
       type: object
       properties:
@@ -525,10 +525,10 @@ components:
           description: Represents the usable daily request limit available for the user account after this query.
         company:
           oneOf:
+          - $ref: '#/components/schemas/Company'
           - type: boolean
             enum:
             - false
-          - $ref: '#/components/schemas/Company'
     ErrorResponseSchema:
       type: object
       properties:
