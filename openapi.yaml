@@ -360,62 +360,117 @@ components:
     Person:
       type: object
       properties:
-        linkedInIdentifier:
-          type: string
-          description: Unique identifier of the LinkedIn profile.
-        linkedInUrl:
-          type: string
-          description: URL of the LinkedIn profile.
-        firstName:
-          type: string
-          description: First name of the user profile.
-        lastName:
-          type: string
-          description: Last name of the user profile.
-        headline:
-          type: string
-          description: Headline of the LinkedIn profile.
-        summary:
-          type: string
-          description: Summary of the LinkedIn profile.
-        companyName:
-          type: string
-          description: Company the user profile is associated with.
-        location:
-          type: string
-          description: Location of the user/company profile.
-        photoUrl:
-          type: string
-          description: URL of the user profile photo.
-        followerCount:
-          type: number
-          description: Number of followers associated with the user profile.
         connectionCount:
           type: number
-          description: Number of connections associated with the user profile.
-        skills:
-          type: array
-          items:
-            type: string
-          description: An array of skills associated with the user profile.
+        creationDate:
+          type: object
+          properties:
+            month:
+              type: number
+            year:
+              type: number
+        firstName:
+          type: string
+        followerCount:
+          type: number
+        headline:
+          type: string
         languages:
           type: array
           items:
             type: string
-          description: An array of languages associated with the user profile.
-        creationDate:
+        lastName:
+          type: string
+        linkedInIdentifier:
+          type: string
+        linkedInUrl:
+          type: string
+        location:
+          type: string
+        photoUrl:
+          type: string
+        positions:
           type: object
           properties:
-            year:
+            positionHistory:
+              type: array
+              items:
+                type: object
+                properties:
+                  companyLocation:
+                    type: string
+                  companyLogo:
+                    type: string
+                  companyName:
+                    type: string
+                  description:
+                    type: string
+                  linkedInUrl:
+                    type: string
+                  startEndDate:
+                    type: object
+                    properties:
+                      start:
+                        type: object
+                        properties:
+                          month:
+                            type: number
+                          year:
+                            type: number
+                      end:
+                        type: object
+                        properties:
+                          month:
+                            type: number
+                          year:
+                            type: number
+                  title:
+                    type: string
+                  contractType:
+                    type: string
+            positionsCount:
               type: number
-              description: Year of creation of the LinkedIn profile.
-            month:
-              type: number
-              description: Month of creation of the LinkedIn profile.
-          description: LinkedIn profile creation date.
         publicIdentifier:
           type: string
-          description: LinkedIn slug of the profile
+        schools:
+          type: object
+          properties:
+            educationHistory:
+              type: array
+              items:
+                type: object
+                properties:
+                  degreeName:
+                    type: string
+                  description:
+                    type: string
+                  fieldOfStudy:
+                    type: string
+                  linkedInUrl:
+                    type: string
+                  schoolLogo:
+                    type: string
+                  schoolName:
+                    type: string
+                  startEndDate:
+                    type: object
+                    properties:
+                      end:
+                        type: object
+                        properties:
+                          year:
+                            type: number
+                      start:
+                        type: object
+                        properties:
+                          year:
+                            type: number
+            educationsCount:
+              type: number
+        skills:
+          type: array
+          items:
+            type: string
     ExtractPersonDataProfile:
       type: object
       properties:
@@ -443,56 +498,39 @@ components:
     Company:
       type: object
       properties:
-        websiteUrl:
-          type: string
-          description: Website URL of the company
-        name:
-          type: string
-          description: Company name
-        employeeCount:
-          type: number
-          description: Number of employees within the company
-        tagline:
-          type: string
-          description: Tagline of the company
         description:
           type: string
-          description: Brief description of the company
+        employeeCount:
+          type: number
+        headquarter:
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            geographicArea:
+              type: string
+            postalCode:
+              type: string
+        industry:
+          type: string
+        linkedInId:
+          type: string
+        linkedInUrl:
+          type: string
+        name:
+          type: string
         specialities:
           type: array
           items:
             type: string
-          description: Specialities of the company
-        headquarter:
-          type: array
-          items:
-            type: object
-            properties:
-              country:
-                type: string
-                description: Headquarter country of the company
-              city:
-                type: string
-                description: Headquarter city of the company
-              postalCode:
-                type: string
-                description: Postal code of the company's headquarter
-              geographicArea:
-                type: string
-                description: Geographic area of the company's headquarter
-          description: Headquarter of the company
-        industry:
+        tagline:
           type: string
-          description: Industry of the company
         universalName:
           type: string
-          description: Slug LinkedIn URL of the company
-        linkedInUrl:
+        websiteUrl:
           type: string
-          description: LinkedIn URL of the company
-        linkedInId:
-          type: string
-          description: LinkedIn ID of the company
     ReverseDomainLookup:
       type: object
       properties:
