@@ -10,7 +10,7 @@ tags:
 - name: Person
 - name: Company
 paths:
-  '/enrichment':
+  '/enrichment ':
     get:
       tags:
       - Person
